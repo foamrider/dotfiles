@@ -6,7 +6,7 @@
 [user]
 	name = Tomas Kirkegaard
 	email = tomas.kirkegaard@gmail.com
-	signingkey = /Users/tomas/.ssh/id_ed25519.pub
+	signingkey = ~/.ssh/id_ed25519.pub
 [diff]
         tool = difftastic
 	external = difft
@@ -24,7 +24,7 @@
 [commit]
 	gpgsign = true
 [core]
-	excludesfile = /Users/tomas/.gitignore_global
+	excludesfile = ~/.gitignore_global
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
 	path = 
