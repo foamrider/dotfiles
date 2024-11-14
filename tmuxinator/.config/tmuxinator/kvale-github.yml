@@ -1,7 +1,7 @@
-# /Users/tomas/.config/tmuxinator/daxaro-web.yml
+# /Users/tomas/.config/tmuxinator/kvale-github.yml
 
-name: daxaro-web
-root: ~/GitHub/Daxaro/daxaro-web-svelte/
+name: kvale-github
+root: ~/GitHub/Kvale/
 
 # Optional tmux socket
 # socket_name: foo
@@ -45,13 +45,27 @@ root: ~/GitHub/Daxaro/daxaro-web-svelte/
 # attach: false
 
 windows:
-  - daxaro-web-svelte:
-      # layout: main-horizontal
+  - deepl-imanage:
+      root: ~/GitHub/Kvale/DeepL/
       layout: f822,315x75,0,0[315x58,0,0,1,315x16,0,59{157x16,0,59,2,157x16,158,59,3}]
       # Synchronize all panes of this window, can be enabled before or after the pane commands run.
       # 'before' represents legacy functionality and will be deprecated in a future release, in favour of 'after'
       # synchronize: after
       panes:
         - nvim
-        - npm run dev
+        - #empty
+        - neofetch
+  - intune-pkgs:
+      root: ~/GitHub/Kvale/intune-pkgs/
+      layout: f822,315x75,0,0[315x58,0,0,1,315x16,0,59{157x16,0,59,2,157x16,158,59,3}]
+      panes:
+        - nvim
+        - pwsh
+        - neofetch
+  - snippets:
+      root: ~/GitHub/Kvale/snippets/
+      layout: f822,315x75,0,0[315x58,0,0,1,315x16,0,59{157x16,0,59,2,157x16,158,59,3}]
+      panes:
+        - nvim
+        - pwsh
         - neofetch
