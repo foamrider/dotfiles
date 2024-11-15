@@ -7,6 +7,6 @@ return {
     "AstroNvim/astrocommunity",
     { import = "astrocommunity.pack.lua" },
     { import = "astrocommunity.motion.mini-move" },
-    { import = "astrocommunity.pack.typescript-all-in-one" },
+    -- { import = "astrocommunity.pack.typescript-all-in-one" },
     -- import/override with your plugins folder
 }
