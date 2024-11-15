@@ -45,16 +45,6 @@ root: ~/GitHub/Kvale/
 # attach: false
 
 windows:
-  - deepl-imanage:
-      root: ~/GitHub/Kvale/DeepL/
-      layout: f822,315x75,0,0[315x58,0,0,1,315x16,0,59{157x16,0,59,2,157x16,158,59,3}]
-      # Synchronize all panes of this window, can be enabled before or after the pane commands run.
-      # 'before' represents legacy functionality and will be deprecated in a future release, in favour of 'after'
-      # synchronize: after
-      panes:
-        - nvim
-        - #empty
-        - neofetch
   - intune-pkgs:
       root: ~/GitHub/Kvale/intune-pkgs/
       layout: f822,315x75,0,0[315x58,0,0,1,315x16,0,59{157x16,0,59,2,157x16,158,59,3}]
@@ -68,4 +58,11 @@ windows:
       panes:
         - nvim
         - pwsh
+        - neofetch
+  - deepl-imanage:
+      root: ~/GitHub/Kvale/DeepL/
+      layout: f822,315x75,0,0[315x58,0,0,1,315x16,0,59{157x16,0,59,2,157x16,158,59,3}]
+      panes:
+        - nvim
+        - #empty
         - neofetch
