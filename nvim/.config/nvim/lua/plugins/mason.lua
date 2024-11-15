@@ -17,6 +17,7 @@ return {
                 "jsonls",
                 "html",
                 "cssls",
+                "powershell_es",
                 -- add more arguments for adding more language servers
             },
         },
