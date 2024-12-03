@@ -50,6 +50,9 @@ return {
                 root_dir = require("lspconfig.util").root_pattern "package.json",
                 single_file_support = false,
             },
+            powershell_es = {
+                settings = { powershell = { codeFormatting = { preset = "OTBS" } } },
+            },
         },
         -- customize how language servers are attached
         handlers = {
