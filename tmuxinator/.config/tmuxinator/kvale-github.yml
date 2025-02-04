@@ -78,5 +78,5 @@ windows:
       layout: f822,315x75,0,0[315x58,0,0,1,315x16,0,59{157x16,0,59,2,157x16,158,59,3}]
       panes:
         - nvim
-        - cd apps/web
+        - #cd apps/web
         - neofetch
