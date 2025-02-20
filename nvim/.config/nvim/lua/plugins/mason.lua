@@ -14,7 +14,7 @@ return {
                 "denols",
                 "eslint",
                 "svelte",
-                "vuels",
+                "volar",
                 "jsonls",
                 "html",
                 "cssls",
