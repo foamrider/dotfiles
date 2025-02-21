@@ -49,6 +49,7 @@ return {
             ts_ls = {
                 root_dir = require("lspconfig.util").root_pattern "package.json",
                 single_file_support = false,
+                on_attach = function(client) client.server_capabilities.documentFormattingProvider = false end,
             },
             powershell_es = {
                 settings = { powershell = { codeFormatting = { preset = "OTBS" } } },
