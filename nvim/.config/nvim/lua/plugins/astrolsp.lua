@@ -47,7 +47,18 @@ return {
             denols = {
                 root_dir = require("lspconfig.util").root_pattern("deno.json", "deno.jsonc"),
             },
+            volar = {},
             ts_ls = {
+                init_options = {
+                    plugins = {
+                        {
+                            name = "@vue/typescript-plugin",
+                            location = "/usr/local/lib/node_modules/@vue/language-server",
+                            languages = { "vue" },
+                        },
+                    },
+                },
+                filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" },
                 root_dir = require("lspconfig.util").root_pattern "package.json",
                 single_file_support = false,
                 on_attach = function(client) client.server_capabilities.documentFormattingProvider = false end,
