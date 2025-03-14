@@ -15,9 +15,25 @@ if not pcall(require, "lazy") then
     vim.cmd.quit()
 end
 
+require "lazy_setup"
+require "polish"
+
 -- Set TAB S-TAB to navigate between buffers
 vim.api.nvim_set_keymap("n", "<S-Tab>", ":bprev<CR>", { noremap = true })
 vim.api.nvim_set_keymap("n", "<Tab>", ":bnext<CR>", { noremap = true })
 
-require "lazy_setup"
-require "polish"
+-- Move chunk in visual mode
+vim.api.nvim_set_keymap("v", "<C-j>", ":m '>+1<CR>gv=gv", { noremap = true })
+vim.api.nvim_set_keymap("v", "<C-k>", ":m '<-2<CR>gv=gv", { noremap = true })
+
+-- Keep cursor in the same place when using J
+vim.api.nvim_set_keymap("n", "J", "mzJ`z", { noremap = true })
+
+-- Keep cursor in the center when scrolling and searching
+vim.api.nvim_set_keymap("n", "<C-d>", "<C-d>zz", { noremap = true })
+vim.api.nvim_set_keymap("n", "<C-u>", "<C-u>zz", { noremap = true })
+vim.api.nvim_set_keymap("n", "n", "nzzzv", { noremap = true })
+vim.api.nvim_set_keymap("n", "N", "Nzzzv", { noremap = true })
+
+-- Paste with Leader P skips adding overwrite to registry
+vim.api.nvim_set_keymap("v", "<Leader>p", '"_dP', { noremap = true, desc = "Paste with skip registry" })
