@@ -37,3 +37,8 @@ vim.api.nvim_set_keymap("n", "N", "Nzzzv", { noremap = true })
 
 -- Paste with Leader P skips adding overwrite to registry
 vim.api.nvim_set_keymap("v", "<Leader>p", '"_dP', { noremap = true, desc = "Paste with skip registry" })
+
+-- Leader y to system clipboard
+vim.api.nvim_set_keymap("n", "<Leader>y", '"+y', { noremap = true, desc = "Copy to clipboard" })
+vim.api.nvim_set_keymap("v", "<Leader>y", '"+y', { noremap = true, desc = "Copy to clipboard" })
+vim.api.nvim_set_keymap("n", "<Leader>Y", '"+Y', { noremap = true, desc = "Copy to clipboard" })
