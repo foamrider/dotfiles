@@ -139,8 +139,44 @@ return {
             "DBUIFindBuffer",
         },
         init = function()
-            -- Your DBUI configuration
             vim.g.db_ui_use_nerd_fonts = 1
+            vim.g.db_ui_show_help = 0
+            -- vim.g.db_ui_use_nvim_notify = 1
+            vim.g.db_ui_win_position = "right"
+            -- vim.g.db_ui_disable_mappings_dbui = 1
+            -- vim.g.db_ui_disable_mappings_dbout = 1
+            -- vim.g.db_ui_disable_mappings_sql = 1
+            vim.g.db_ui_use_postgres_views = 0
         end,
+        keys = {
+            { "<leader>Dt", "<cmd>DBUIToggle<cr>", desc = "Toggle UI" },
+            { "<leader>Df", "<cmd>DBUIFindBuffer<cr>", desc = "Find Buffer" },
+            { "<leader>Dr", "<cmd>DBUIRenameBuffer<cr>", desc = "Rename Buffer" },
+            { "<leader>Dq", "<cmd>DBUILastQueryInfo<cr>", desc = "Last Query Info" },
+        },
+    },
+    {
+        {
+            "hrsh7th/nvim-cmp",
+            dependencies = {
+                "kristijanhusak/vim-dadbod-completion",
+            },
+            -- override the options table that is used in the `require("cmp").setup()` call
+            opts = function(_, opts)
+                -- opts parameter is the default options table
+                -- the function is lazy loaded so cmp is able to be required
+                local cmp = require "cmp"
+                -- modify the sources part of the options table
+                opts.sources = cmp.config.sources {
+                    { name = "nvim_lsp", priority = 1000 },
+                    { name = "luasnip", priority = 750 },
+                    { name = "buffer", priority = 500 },
+                    { name = "path", priority = 250 },
+                    { name = "vim-dadbod-completion", priority = 700 }, -- add new source
+                }
+                -- return the new table to be used
+                return opts
+            end,
+        },
     },
 }
