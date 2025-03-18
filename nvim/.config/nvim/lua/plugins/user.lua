@@ -219,4 +219,17 @@ return {
             },
         },
     },
+    {
+        "stevearc/conform.nvim",
+        event = { "BufWritePre" },
+        cmd = { "ConformInfo" },
+        -- This will provide type hinting with LuaLS
+        ---@module "conform"
+        ---@type conform.setupOpts
+        opts = {
+            formatters_by_ft = {
+                vue = { "volar", "ts_ls", "prettierd", "prettier", "eslint" },
+            },
+        },
+    },
 }
