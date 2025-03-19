@@ -23,22 +23,28 @@ vim.api.nvim_set_keymap("n", "<S-Tab>", ":bprev<CR>", { noremap = true })
 vim.api.nvim_set_keymap("n", "<Tab>", ":bnext<CR>", { noremap = true })
 
 -- Move chunk in visual mode
-vim.api.nvim_set_keymap("v", "<C-j>", ":m '>+1<CR>gv=gv", { noremap = true })
-vim.api.nvim_set_keymap("v", "<C-k>", ":m '<-2<CR>gv=gv", { noremap = true })
+vim.api.nvim_set_keymap("v", "<C-j>", ":m '>+1<CR>gv=gv", { noremap = true, desc = "Move selected text down" })
+vim.api.nvim_set_keymap("v", "<C-k>", ":m '<-2<CR>gv=gv", { noremap = true, desc = "Move selected text up" })
 
 -- Keep cursor in the same place when using J
-vim.api.nvim_set_keymap("n", "J", "mzJ`z", { noremap = true })
+vim.api.nvim_set_keymap("n", "J", "mzJ`z", { noremap = true, desc = "Append next line to this" })
 
 -- Keep cursor in the center when scrolling and searching
-vim.api.nvim_set_keymap("n", "<C-d>", "<C-d>zz", { noremap = true })
-vim.api.nvim_set_keymap("n", "<C-u>", "<C-u>zz", { noremap = true })
-vim.api.nvim_set_keymap("n", "n", "nzzzv", { noremap = true })
-vim.api.nvim_set_keymap("n", "N", "Nzzzv", { noremap = true })
+vim.api.nvim_set_keymap("n", "<C-d>", "<C-d>zz", { noremap = true, desc = "Scroll half page down" })
+vim.api.nvim_set_keymap("n", "<C-u>", "<C-u>zz", { noremap = true, desc = "Scroll half page up" })
+vim.api.nvim_set_keymap("n", "n", "nzzzv", { noremap = true, desc = "Next search result" })
+vim.api.nvim_set_keymap("n", "N", "Nzzzv", { noremap = true, desc = "Previous search result" })
 
 -- Paste with Leader P skips adding overwrite to registry
-vim.api.nvim_set_keymap("v", "<Leader>p", '"_dP', { noremap = true, desc = "Paste with skip registry" })
+vim.api.nvim_set_keymap("x", "<Leader>p", '"_dP', { noremap = true, desc = "Paste with skip registry" })
 
 -- Leader y to system clipboard
 vim.api.nvim_set_keymap("n", "<Leader>y", '"+y', { noremap = true, desc = "Copy to clipboard" })
 vim.api.nvim_set_keymap("v", "<Leader>y", '"+y', { noremap = true, desc = "Copy to clipboard" })
 vim.api.nvim_set_keymap("n", "<Leader>Y", '"+Y', { noremap = true, desc = "Copy to clipboard" })
+
+-- Conform setup
+-- vim.api.nvim_create_autocmd("BufWritePre", {
+--     pattern = "*",
+--     callback = function(args) require("conform").format { bufnr = args.buf } end,
+-- })
