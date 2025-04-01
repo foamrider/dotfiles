@@ -43,6 +43,12 @@ vim.api.nvim_set_keymap("n", "<Leader>y", '"+y', { noremap = true, desc = "Copy 
 vim.api.nvim_set_keymap("v", "<Leader>y", '"+y', { noremap = true, desc = "Copy to clipboard" })
 vim.api.nvim_set_keymap("n", "<Leader>Y", '"+Y', { noremap = true, desc = "Copy to clipboard" })
 
+-- Replace Leader e to use add reveal option
+vim.api.nvim_set_keymap("n", "<Leader>e", ":Neotree reveal<CR>", { noremap = true, silent = true })
+
+-- Add Todo Telescope keymap
+vim.api.nvim_set_keymap("n", "<Leader>lt", ":TodoTelescope<CR>", { noremap = true, desc = "Todo Telecope" })
+
 -- Conform setup
 -- vim.api.nvim_create_autocmd("BufWritePre", {
 --     pattern = "*",
