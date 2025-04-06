@@ -1,5 +1,4 @@
 -- You can also add or configure plugins by creating files in this `plugins/` folder
--- PLEASE REMOVE THE EXAMPLES YOU HAVE NO INTEREST IN BEFORE ENABLING THIS FILE
 -- Here are some examples:
 
 ---@type LazySpec
@@ -16,30 +15,29 @@ return {
 
     -- == Examples of Overriding Plugins ==
 
-    -- customize dashboard options
+    -- customize alpha options
     {
-        "folke/snacks.nvim",
-        opts = {
-            dashboard = {
-                preset = {
-                    header = table.concat({
-                        "███████╗ ██████╗  █████╗ ███╗   ███╗██╗   ██╗",
-                        "██╔════╝██╔═══██╗██╔══██╗████╗ ████║╚██╗ ██╔╝",
-                        "█████╗  ██║   ██║███████║██╔████╔██║ ╚████╔╝ ",
-                        "██╔══╝  ██║   ██║██╔══██║██║╚██╔╝██║  ╚██╔╝  ",
-                        "██║     ╚██████╔╝██║  ██║██║ ╚═╝ ██║   ██║   ",
-                        "╚═╝      ╚═════╝ ╚═╝  ╚═╝╚═╝     ╚═╝   ╚═╝   ",
-                        " ",
-                        "     ███╗   ██╗██╗   ██╗██╗███╗   ███╗       ",
-                        "     ████╗  ██║██║   ██║██║████╗ ████║       ",
-                        "     ██╔██╗ ██║██║   ██║██║██╔████╔██║       ",
-                        "     ██║╚██╗██║╚██╗ ██╔╝██║██║╚██╔╝██║       ",
-                        "     ██║ ╚████║ ╚████╔╝ ██║██║ ╚═╝ ██║       ",
-                        "     ╚═╝  ╚═══╝  ╚═══╝  ╚═╝╚═╝     ╚═╝       ",
-                    }, "\n"),
-                },
-            },
-        },
+        "goolord/alpha-nvim",
+        opts = function(_, opts)
+            -- customize the dashboard header
+            opts.section.header.val = {
+
+                "███████╗ ██████╗  █████╗ ███╗   ███╗██╗   ██╗",
+                "██╔════╝██╔═══██╗██╔══██╗████╗ ████║╚██╗ ██╔╝",
+                "█████╗  ██║   ██║███████║██╔████╔██║ ╚████╔╝ ",
+                "██╔══╝  ██║   ██║██╔══██║██║╚██╔╝██║  ╚██╔╝  ",
+                "██║     ╚██████╔╝██║  ██║██║ ╚═╝ ██║   ██║   ",
+                "╚═╝      ╚═════╝ ╚═╝  ╚═╝╚═╝     ╚═╝   ╚═╝   ",
+                " ",
+                "     ███╗   ██╗██╗   ██╗██╗███╗   ███╗       ",
+                "     ████╗  ██║██║   ██║██║████╗ ████║       ",
+                "     ██╔██╗ ██║██║   ██║██║██╔████╔██║       ",
+                "     ██║╚██╗██║╚██╗ ██╔╝██║██║╚██╔╝██║       ",
+                "     ██║ ╚████║ ╚████╔╝ ██║██║ ╚═╝ ██║       ",
+                "     ╚═╝  ╚═══╝  ╚═══╝  ╚═╝╚═╝     ╚═╝       ",
+            }
+            return opts
+        end,
     },
 
     -- You can disable default plugins as follows:
@@ -161,27 +159,78 @@ return {
         },
     },
     {
-        "folke/trouble.nvim",
-        optional = true,
-        specs = {
-            "folke/snacks.nvim",
+        {
+            "hrsh7th/nvim-cmp",
+            dependencies = {
+                "kristijanhusak/vim-dadbod-completion",
+            },
+            -- override the options table that is used in the `require("cmp").setup()` call
             opts = function(_, opts)
-                return vim.tbl_deep_extend("force", opts or {}, {
-                    picker = {
-                        actions = require("trouble.sources.snacks").actions,
-                        win = {
-                            input = {
-                                keys = {
-                                    ["<c-t>"] = {
-                                        "trouble_open",
-                                        mode = { "n", "i" },
-                                    },
-                                },
-                            },
-                        },
-                    },
-                })
+                -- opts parameter is the default options table
+                -- the function is lazy loaded so cmp is able to be required
+                local cmp = require "cmp"
+                -- modify the sources part of the options table
+                opts.sources = cmp.config.sources {
+                    { name = "nvim_lsp", priority = 1000 },
+                    { name = "luasnip", priority = 750 },
+                    { name = "buffer", priority = 500 },
+                    { name = "path", priority = 250 },
+                    { name = "vim-dadbod-completion", priority = 700 }, -- add new source
+                }
+                -- return the new table to be used
+                return opts
             end,
+        },
+    },
+    {
+        "folke/trouble.nvim",
+        opts = {}, -- for default options, refer to the configuration section for custom setup.
+        cmd = "Trouble",
+        keys = {
+            {
+                "<leader>xx",
+                "<cmd>Trouble diagnostics toggle<cr>",
+                desc = "Diagnostics (Trouble)",
+            },
+            {
+                "<leader>xX",
+                "<cmd>Trouble diagnostics toggle filter.buf=0<cr>",
+                desc = "Buffer Diagnostics (Trouble)",
+            },
+            {
+                "<leader>cs",
+                "<cmd>Trouble symbols toggle focus=false<cr>",
+                desc = "Symbols (Trouble)",
+            },
+            {
+                "<leader>cl",
+                "<cmd>Trouble lsp toggle focus=false win.position=right<cr>",
+                desc = "LSP Definitions / references / ... (Trouble)",
+            },
+            {
+                "<leader>xL",
+                "<cmd>Trouble loclist toggle<cr>",
+                desc = "Location List (Trouble)",
+            },
+            {
+                "<leader>xQ",
+                "<cmd>Trouble qflist toggle<cr>",
+                desc = "Quickfix List (Trouble)",
+            },
+        },
+    },
+    {
+        "stevearc/conform.nvim",
+        enabled = false,
+        event = { "BufWritePre" },
+        cmd = { "ConformInfo" },
+        -- This will provide type hinting with LuaLS
+        ---@module "conform"
+        ---@type conform.setupOpts
+        opts = {
+            formatters_by_ft = {
+                vue = { "eslint_d", "prettierd", lsp_format = "fallback", stop_after_first = true },
+            },
         },
     },
     {
@@ -208,7 +257,7 @@ return {
             "nvim-lua/plenary.nvim",
             "MunifTanjim/nui.nvim",
             --- The below dependencies are optional,
-            "echasnovski/mini.pick", -- for file_selector provider mini.pick
+            -- "echasnovski/mini.pick", -- for file_selector provider mini.pick
             -- "nvim-telescope/telescope.nvim", -- for file_selector provider telescope
             -- "hrsh7th/nvim-cmp", -- autocompletion for avante commands and mentions
             -- "ibhagwan/fzf-lua", -- for file_selector provider fzf

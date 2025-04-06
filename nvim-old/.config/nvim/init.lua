@@ -23,8 +23,8 @@ vim.api.nvim_set_keymap("n", "<S-Tab>", ":bprev<CR>", { noremap = true })
 vim.api.nvim_set_keymap("n", "<Tab>", ":bnext<CR>", { noremap = true })
 
 -- Move chunk in visual mode
--- vim.api.nvim_set_keymap("v", "<C-j>", ":m '>+1<CR>gv=gv", { noremap = true, desc = "Move selected text down" })
--- vim.api.nvim_set_keymap("v", "<C-k>", ":m '<-2<CR>gv=gv", { noremap = true, desc = "Move selected text up" })
+vim.api.nvim_set_keymap("v", "<C-j>", ":m '>+1<CR>gv=gv", { noremap = true, desc = "Move selected text down" })
+vim.api.nvim_set_keymap("v", "<C-k>", ":m '<-2<CR>gv=gv", { noremap = true, desc = "Move selected text up" })
 
 -- Keep cursor in the same place when using J
 vim.api.nvim_set_keymap("n", "J", "mzJ`z", { noremap = true, desc = "Append next line to this" })
@@ -46,17 +46,11 @@ vim.api.nvim_set_keymap("n", "<Leader>Y", '"+Y', { noremap = true, desc = "Copy 
 -- Replace Leader e to use add reveal option
 vim.api.nvim_set_keymap("n", "<Leader>e", ":Neotree reveal<CR>", { noremap = true, silent = true })
 
--- Add Todo for Snacks picker keymap
-vim.api.nvim_set_keymap(
-    "n",
-    "<Leader>lt",
-    ":lua Snacks.picker.todo_comments()<CR>",
-    { noremap = true, desc = "Todo List" }
-)
+-- Add Todo Telescope keymap
+vim.api.nvim_set_keymap("n", "<Leader>lt", ":TodoTelescope<CR>", { noremap = true, desc = "Todo Telecope" })
 
-vim.api.nvim_set_keymap(
-    "n",
-    "<Leader>dn",
-    ":lua Snacks.picker.notifications()<CR>",
-    { noremap = true, desc = "Show Notifications" }
-)
+-- Conform setup
+-- vim.api.nvim_create_autocmd("BufWritePre", {
+--     pattern = "*",
+--     callback = function(args) require("conform").format { bufnr = args.buf } end,
+-- })

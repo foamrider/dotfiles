@@ -14,7 +14,6 @@ return {
             "html",
             "css",
             "typescript",
-            -- add more arguments for adding more treesitter parsers
         },
     },
 }

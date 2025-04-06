@@ -1,47 +1,63 @@
--- Customize Mason plugins
+-- Customize Mason
 
 ---@type LazySpec
 return {
-    -- use mason-lspconfig to configure LSP installations
+    -- use mason-tool-installer for automatically installing Mason packages
     {
-        "williamboman/mason-lspconfig.nvim",
-        -- overrides `require("mason-lspconfig").setup(...)`
+        "WhoIsSethDaniel/mason-tool-installer.nvim",
+        -- overrides `require("mason-tool-installer").setup(...)`
         opts = {
+            -- Make sure to use the names found in `:Mason`
             ensure_installed = {
-                "lua_ls",
-                "ts_ls",
-                "emmet_ls",
-                "denols",
-                "eslint",
-                "svelte",
-                "volar",
-                "jsonls",
-                "html",
-                "cssls",
-                "powershell_es",
-                -- add more arguments for adding more language servers
-            },
-        },
-    },
-    -- use mason-null-ls to configure Formatters/Linter installation for null-ls sources
-    {
-        "jay-babu/mason-null-ls.nvim",
-        -- overrides `require("mason-null-ls").setup(...)`
-        opts = {
-            ensure_installed = {
+                -- install language servers
+                "lua-language-server",
+                "typescript-language-server",
+                "emmet-language-server",
+                "deno",
+                "eslint-lsp",
+                "svelte-language-server",
+                "vue-language-server",
+                "json-lsp",
+                "html-lsp",
+                "css-lsp",
+                "powershell-editor-services",
+
+                -- install formatters
                 "stylua",
                 "prettierd",
-                -- add more arguments for adding more null-ls sources
+
+                -- install debuggers
+                "debugpy",
+
+                -- install any other package
+                "tree-sitter-cli",
             },
         },
     },
     {
-        "jay-babu/mason-nvim-dap.nvim",
-        -- overrides `require("mason-nvim-dap").setup(...)`
+        "jay-babu/mason-null-ls.nvim",
         opts = {
-            ensure_installed = {
-                "python",
-                -- add more arguments for adding more debuggers
+            handlers = {
+                -- for prettier
+                prettier = function()
+                    require("null-ls").register(require("null-ls").builtins.formatting.prettier.with {
+                        condition = function(utils)
+                            return utils.root_has_file ".prettierrc"
+                                or utils.root_has_file ".prettierrc.json"
+                                or utils.root_has_file ".prettierrc.js"
+                        end,
+                    })
+                end,
+                -- for prettierd
+                prettierd = function()
+                    require("null-ls").register(require("null-ls").builtins.formatting.prettierd.with {
+                        condition = function(utils)
+                            return utils.root_has_file ".prettierrc"
+                                or utils.root_has_file ".prettierrc.json"
+                                or utils.root_has_file ".prettierrc.js"
+                        end,
+                    })
+                end,
             },
         },
     },
