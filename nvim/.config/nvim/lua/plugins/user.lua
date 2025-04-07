@@ -191,6 +191,9 @@ return {
         version = false, -- Never set this value to "*"! Never!
         opts = {
             provider = "copilot",
+            file_selector = {
+                provider = "snacks", -- Use Snacks.picker as the file selector
+            },
             openai = {
                 endpoint = "https://api.openai.com/v1",
                 model = "gpt-4o", -- your desired model (or use gpt-4o, etc.)
