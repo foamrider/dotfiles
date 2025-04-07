@@ -1,7 +1,11 @@
 return {
     "saghen/blink.cmp",
     -- optional: provides snippets for the snippet source
-    dependencies = { "rafamadriz/friendly-snippets" },
+    dependencies = {
+        "rafamadriz/friendly-snippets",
+        "Kaiser-Yang/blink-cmp-avante",
+        "jdrupal-dev/css-vars.nvim",
+    },
 
     -- use a release tag to download pre-built binaries
     version = "1.*",
@@ -34,18 +38,34 @@ return {
         },
 
         -- (Default) Only show the documentation popup when manually triggered
-        completion = { documentation = { auto_show = false } },
+        completion = {
+            -- documentation = { auto_show = false },
+
+            -- Disable auto brackets
+            -- NOTE: some LSPs may add auto brackets themselves anyway
+            accept = { auto_brackets = { enabled = false } },
+        },
 
         -- Default list of enabled providers defined so that you can extend it
         -- elsewhere in your config, without redefining it, due to `opts_extend`
         sources = {
-            default = { "lsp", "path", "snippets", "buffer" },
+            default = { "avante", "css_vars", "lsp", "path", "snippets", "buffer" },
             per_filetype = {
                 sql = { "snippets", "dadbod", "buffer" },
             },
             -- add vim-dadbod-completion to your completion providers
             providers = {
                 dadbod = { name = "Dadbod", module = "vim_dadbod_completion.blink" },
+                avante = { module = "blink-cmp-avante", name = "Avante", opts = {} },
+                css_vars = {
+                    name = "css-vars",
+                    module = "css-vars.blink",
+                    opts = {
+                        -- WARNING: The search is not optimized to look for variables in JS files.
+                        -- If you change the search_extensions you might get false positives and weird completion results.
+                        search_extensions = { ".css", ".scss" },
+                    },
+                },
             },
         },
 

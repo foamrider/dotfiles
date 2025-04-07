@@ -13,6 +13,7 @@ return {
             "bash",
             "html",
             "css",
+            "scss",
             "typescript",
             -- add more arguments for adding more treesitter parsers
         },
