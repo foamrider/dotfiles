@@ -128,6 +128,7 @@ return {
         config = function()
             require("blame_line").setup {
                 show_in_insert = false,
+                prefix = "     ",
             }
         end,
     },
