@@ -64,7 +64,12 @@ return {
                 on_attach = function(client) client.server_capabilities.documentFormattingProvider = false end,
             },
             powershell_es = {
-                settings = { powershell = { codeFormatting = { preset = "OTBS" } } },
+                filetypes = { "ps1", "psm1", "psd1" },
+                settings = { powershell = { codeFormatting = { Preset = "OTBS" } } },
+                init_options = {
+                    enableProfileLoading = false,
+                },
+                -- settings = { powershell = { codeFormatting = { preset = "OTBS" } } },
             },
         },
         -- customize how language servers are attached

@@ -186,6 +186,21 @@ return {
         },
     },
     {
+        "mbbill/undotree",
+        cmd = "UndotreeToggle",
+        keys = {
+            { "<leader>U", "<cmd>UndotreeToggle<CR>", desc = "Toggle Undotree" },
+        },
+        init = function()
+            vim.g.undotree_WindowLayout = 2 -- Undotree on left, diff below
+            vim.g.undotree_ShortIndicators = 0 -- Use shorter timestamps
+            vim.g.undotree_SetFocusWhenToggle = 1 -- Focus on undotree when toggled
+            vim.g.undotree_DiffAutoOpen = 0 -- Auto open diff window
+            vim.g.undotree_SplitWidth = 36 -- Set undotree window width
+            vim.g.undotree_DiffpanelHeight = 30 -- Set diff panel height
+        end,
+    },
+    {
         "yetone/avante.nvim",
         event = "VeryLazy",
         version = false, -- Never set this value to "*"! Never!
@@ -203,7 +218,7 @@ return {
                 --reasoning_effort = "medium", -- low|medium|high, only used for reasoning models
             },
             copilot = {
-                model = "claude-3.7-sonnet",
+                model = "gpt-4.1",
             },
         },
         -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`

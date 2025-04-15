@@ -47,14 +47,23 @@ return {
             denols = {
                 root_dir = require("lspconfig.util").root_pattern("deno.json", "deno.jsonc"),
             },
-            volar = {},
+            volar = {
+                init_options = {
+                    vue = {
+                        hybridMode = true,
+                    },
+                },
+            },
             ts_ls = {
                 init_options = {
                     plugins = {
                         {
                             name = "@vue/typescript-plugin",
-                            location = "/usr/local/lib/node_modules/@vue/language-server",
-                            languages = { "vue" },
+                            -- location = "/usr/local/lib/node_modules/@vue/language-server",
+                            -- location = "/Users/tomas/.nvm/versions/node/v22.11.0/lib/node_modules/@vue/language-server",
+                            location = "/Users/tomas/.nvm/versions/node/v22.11.0/lib/node_modules/@vue/typescript-plugin",
+                            languages = { "javascript", "typescript", "vue" },
+                            -- languages = { "vue" },
                         },
                     },
                 },

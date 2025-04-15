@@ -62,4 +62,4 @@ vim.api.nvim_set_keymap(
 )
 
 -- Add esc esc to exit insert mode in terminal
-vim.api.nvim_set_keymap("t", "<esc><esc>", "<c-\\><c-n>", { noremap = true })
+-- vim.api.nvim_set_keymap("t", "<esc><esc>", "<c-\\><c-n>", { noremap = true })
