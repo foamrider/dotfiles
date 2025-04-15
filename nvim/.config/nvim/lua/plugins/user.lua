@@ -221,6 +221,9 @@ return {
                 model = "gpt-4.1",
             },
         },
+        keys = {
+            { "<leader>ax", "<cmd>AvanteClear<cr>", desc = "avante: clear history" },
+        },
         -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
         build = "make",
         -- build = "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false" -- for windows
