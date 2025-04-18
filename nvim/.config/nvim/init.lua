@@ -54,12 +54,5 @@ vim.api.nvim_set_keymap(
     { noremap = true, desc = "Todo List" }
 )
 
-vim.api.nvim_set_keymap(
-    "n",
-    "<Leader>dn",
-    ":lua Snacks.picker.notifications()<CR>",
-    { noremap = true, desc = "Show Notifications" }
-)
-
 -- Add esc esc to exit insert mode in terminal
 -- vim.api.nvim_set_keymap("t", "<esc><esc>", "<c-\\><c-n>", { noremap = true })
