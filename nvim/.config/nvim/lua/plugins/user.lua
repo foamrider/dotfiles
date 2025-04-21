@@ -45,6 +45,9 @@ return {
     -- You can disable default plugins as follows:
     { "max397574/better-escape.nvim", enabled = false },
 
+    -- Add themes
+    { "projekt0n/github-nvim-theme", name = "github-theme" },
+
     -- You can also easily customize additional setup of plugins that is outside of the plugin's setup call
     {
         "L3MON4D3/LuaSnip",
@@ -206,19 +209,20 @@ return {
         version = false, -- Never set this value to "*"! Never!
         opts = {
             provider = "copilot",
+            auto_suggestions_provider = "copilot",
             file_selector = {
                 provider = "snacks", -- Use Snacks.picker as the file selector
             },
-            openai = {
-                endpoint = "https://api.openai.com/v1",
-                model = "gpt-4o", -- your desired model (or use gpt-4o, etc.)
-                timeout = 60000, -- Timeout in milliseconds, increase this for reasoning models
-                temperature = 0,
-                max_tokens = 8192, -- Increase this to include reasoning tokens (for reasoning models)
-                --reasoning_effort = "medium", -- low|medium|high, only used for reasoning models
-            },
+            -- openai = {
+            --     endpoint = "https://api.openai.com/v1",
+            --     model = "gpt-4o", -- your desired model (or use gpt-4o, etc.)
+            --     timeout = 60000, -- Timeout in milliseconds, increase this for reasoning models
+            --     temperature = 0,
+            --     max_tokens = 8192, -- Increase this to include reasoning tokens (for reasoning models)
+            --     --reasoning_effort = "medium", -- low|medium|high, only used for reasoning models
+            -- },
             copilot = {
-                model = "gpt-4.1",
+                model = "gemini-2.5-pro",
             },
         },
         keys = {
