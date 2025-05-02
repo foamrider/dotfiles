@@ -42,6 +42,27 @@ return {
         },
     },
 
+    -- Customize todo comments
+    {
+        "folke/todo-comments.nvim",
+        dependencies = { "nvim-lua/plenary.nvim" },
+        opts = {
+            keywords = {
+                TEMP = {
+                    icon = " ",
+                    color = "info",
+                },
+            },
+            highlight = {
+                multiline = false,
+                pattern = [[.*<(KEYWORDS)\s*]],
+            },
+            search = {
+                pattern = [[\b(KEYWORDS)\b]],
+            },
+        },
+    },
+
     -- You can disable default plugins as follows:
     { "max397574/better-escape.nvim", enabled = false },
 
@@ -213,16 +234,18 @@ return {
             file_selector = {
                 provider = "snacks", -- Use Snacks.picker as the file selector
             },
-            -- openai = {
-            --     endpoint = "https://api.openai.com/v1",
-            --     model = "gpt-4o", -- your desired model (or use gpt-4o, etc.)
-            --     timeout = 60000, -- Timeout in milliseconds, increase this for reasoning models
-            --     temperature = 0,
-            --     max_tokens = 8192, -- Increase this to include reasoning tokens (for reasoning models)
-            --     --reasoning_effort = "medium", -- low|medium|high, only used for reasoning models
-            -- },
             copilot = {
-                model = "gemini-2.5-pro",
+                model = "gpt-4.1",
+            },
+            mappings = {
+                --- @class AvanteConflictMappings
+                suggestion = {
+                    accept = "<C-l>",
+                },
+            },
+            hints = { enabled = true },
+            web_search_engine = {
+                provider = "tavily",
             },
         },
         keys = {
@@ -238,28 +261,7 @@ return {
             "MunifTanjim/nui.nvim",
             --- The below dependencies are optional,
             "echasnovski/mini.pick", -- for file_selector provider mini.pick
-            -- "nvim-telescope/telescope.nvim", -- for file_selector provider telescope
-            -- "hrsh7th/nvim-cmp", -- autocompletion for avante commands and mentions
-            -- "ibhagwan/fzf-lua", -- for file_selector provider fzf
-            -- "nvim-tree/nvim-web-devicons", -- or echasnovski/mini.icons
             "zbirenbaum/copilot.lua", -- for providers='copilot'
-            -- {
-            --     -- support for image pasting
-            --     "HakonHarnes/img-clip.nvim",
-            --     event = "VeryLazy",
-            --     opts = {
-            --         -- recommended settings
-            --         default = {
-            --             embed_image_as_base64 = false,
-            --             prompt_for_file_name = false,
-            --             drag_and_drop = {
-            --                 insert_mode = true,
-            --             },
-            --             -- required for Windows users
-            --             use_absolute_path = true,
-            --         },
-            --     },
-            -- },
             {
                 -- Make sure to set this up properly if you have lazy=true
                 "MeanderingProgrammer/render-markdown.nvim",
