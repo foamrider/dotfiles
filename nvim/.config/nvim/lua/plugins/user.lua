@@ -231,7 +231,7 @@ return {
         opts = {
             provider = "copilot",
             auto_suggestions_provider = "copilot",
-            file_selector = {
+            selector = {
                 provider = "snacks", -- Use Snacks.picker as the file selector
             },
             copilot = {

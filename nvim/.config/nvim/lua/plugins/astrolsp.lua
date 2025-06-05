@@ -61,7 +61,8 @@ return {
                             name = "@vue/typescript-plugin",
                             -- location = "/usr/local/lib/node_modules/@vue/language-server",
                             -- location = "/Users/tomas/.nvm/versions/node/v22.11.0/lib/node_modules/@vue/language-server",
-                            location = "/Users/tomas/.nvm/versions/node/v22.11.0/lib/node_modules/@vue/typescript-plugin",
+                            -- location = "/Users/tomas/.nvm/versions/node/v22.11.0/lib/node_modules/@vue/typescript-plugin",
+                            location = "",
                             languages = { "javascript", "typescript", "vue" },
                             -- languages = { "vue" },
                         },
@@ -73,7 +74,12 @@ return {
                 on_attach = function(client) client.server_capabilities.documentFormattingProvider = false end,
             },
             powershell_es = {
+                filetypes = { "ps1", "psm1", "psd1" },
+                bundle_path = "~/.local/share/nvim/mason/packages/powershell-editor-services",
                 settings = { powershell = { codeFormatting = { preset = "OTBS" } } },
+                init_options = {
+                    enableProfileLoading = false,
+                },
             },
         },
         -- customize how language servers are attached
