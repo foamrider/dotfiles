@@ -230,12 +230,14 @@ return {
         version = false, -- Never set this value to "*"! Never!
         opts = {
             provider = "copilot",
+            providers = {
+                copilot = {
+                    model = "gpt-4.1",
+                },
+            },
             auto_suggestions_provider = "copilot",
             selector = {
                 provider = "snacks", -- Use Snacks.picker as the file selector
-            },
-            copilot = {
-                model = "gpt-4.1",
             },
             mappings = {
                 --- @class AvanteConflictMappings
