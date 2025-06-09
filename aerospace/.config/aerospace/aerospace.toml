@@ -197,6 +197,18 @@ automatically-unhide-macos-hidden-apps = false
     run = 'layout floating'
 
 [[on-window-detected]]
+    if.app-id = 'com.apple.calculator'
+    run = 'layout floating'
+
+[[on-window-detected]]
+    if.app-id = 'com.apple.iCal'
+    run = 'layout floating'
+
+[[on-window-detected]]
+    if.app-id = 'net.whatsapp.WhatsApp'
+    run = 'layout floating'
+
+[[on-window-detected]]
     if.app-name-regex-substring = 'AnyDesk'
     run = 'layout floating'
 
