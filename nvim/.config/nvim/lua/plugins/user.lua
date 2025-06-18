@@ -53,13 +53,6 @@ return {
                     color = "info",
                 },
             },
-            highlight = {
-                multiline = false,
-                pattern = [[.*<(KEYWORDS)\s*]],
-            },
-            search = {
-                pattern = [[\b(KEYWORDS)\b]],
-            },
         },
     },
 
