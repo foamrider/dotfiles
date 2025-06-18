@@ -21,7 +21,7 @@ exec-on-workspace-change = ['/bin/bash', '-c', '''
 ''']
 
 # Start AeroSpace at login
-start-at-login = true
+start-at-login = false
 
 # Normalizations. See: https://nikitabobko.github.io/AeroSpace/guide#normalization
 enable-normalization-flatten-containers = true
@@ -30,7 +30,7 @@ enable-normalization-opposite-orientation-for-nested-containers = true
 # See: https://nikitabobko.github.io/AeroSpace/guide#layouts
 # The 'accordion-padding' specifies the size of accordion padding
 # You can set 0 to disable the padding feature
-accordion-padding = 300
+accordion-padding = 30
 
 # Possible values: tiles|accordion
 default-root-container-layout = 'tiles'
@@ -67,7 +67,7 @@ automatically-unhide-macos-hidden-apps = false
 #                 https://nikitabobko.github.io/AeroSpace/guide#assign-workspaces-to-monitors
 [gaps]
     inner.horizontal = 10
-    inner.vertical =   10
+    inner.vertical =   5
     outer.left =       10
     outer.bottom =     10
     outer.top =        10
@@ -157,6 +157,7 @@ automatically-unhide-macos-hidden-apps = false
 
     # Custom
     alt-shift-f = 'fullscreen'
+    alt-ctrl-shift-f = 'macos-native-fullscreen'
     alt-ctrl-f = 'layout floating tiling'
 
     # Apps
@@ -209,8 +210,24 @@ automatically-unhide-macos-hidden-apps = false
     run = 'layout floating'
 
 [[on-window-detected]]
+    if.app-id = 'com.apple.iphonesimulator'
+    run = 'layout floating'
+
+[[on-window-detected]]
     if.app-name-regex-substring = 'AnyDesk'
     run = 'layout floating'
+
+[[on-window-detected]]
+    if.app-id = 'com.microsoft.rdc.macos'
+    run = 'layout floating'
+
+[[on-window-detected]]
+    if.app-id = 'com.apple.AppStore'
+    run = 'layout floating'
+
+[[on-window-detected]]
+    if.app-id = 'com.apple.dt.Xcode'
+    run = 'move-node-to-workspace 4'
 
 [[on-window-detected]]
     if.window-title-regex-substring = 'Microsoft Edge – Kvale'
