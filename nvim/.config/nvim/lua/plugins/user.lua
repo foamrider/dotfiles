@@ -218,6 +218,56 @@ return {
         end,
     },
     {
+        "ravitemer/mcphub.nvim",
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+        },
+        -- build = "npm install -g mcp-hub@latest", -- Installs `mcp-hub` node binary globally
+        config = function()
+            require("mcphub").setup {
+                port = 37373,
+                config = vim.fn.expand "~/.config/mcphub/servers.json",
+                native_servers = {},
+
+                mcp_request_timeout = 10000, -- 10 seconds
+                builtin_tools = {},
+
+                auto_approve = false,
+                auto_toggle_mcp_servers = true,
+                extensions = {
+                    avante = {
+                        make_slash_commands = true,
+                    },
+                },
+
+                ui = {
+                    window = {
+                        width = 0.8,
+                        height = 0.8,
+                        relative = "editor",
+                        zindex = 50,
+                        border = "rounded",
+                    },
+                    wo = {},
+                },
+
+                on_ready = function(hub) end,
+                on_error = function(err) end,
+
+                use_bundled_binary = false, -- Explicitly use global mcp-hub executable
+
+                -- server_url = nil, -- defaults to `http://localhost:port`
+                shutdown_delay = 600000, -- 10 minutes
+                log = {
+                    level = vim.log.levels.INFO,
+                    to_file = true,
+                    file_path = vim.fn.stdpath "state" .. "/mcphub.log",
+                    prefix = "MCPHub",
+                },
+            }
+        end,
+    },
+    {
         "yetone/avante.nvim",
         event = "VeryLazy",
         version = false, -- Never set this value to "*"! Never!
@@ -228,6 +278,17 @@ return {
                     model = "gpt-4.1",
                 },
             },
+            -- The system_prompt type supports both a string and a function that returns a string. Using a function here allows dynamically updating the prompt with mcphub
+            system_prompt = function()
+                local hub = require("mcphub").get_hub_instance()
+                if hub and hub.get_active_servers_prompt then return hub:get_active_servers_prompt() end
+            end,
+            -- The custom_tools type supports both a list and a function that returns a list. Using a function here prevents requiring mcphub before it's loaded
+            custom_tools = function()
+                return {
+                    require("mcphub.extensions.avante").mcp_tool(),
+                }
+            end,
             auto_suggestions_provider = "copilot",
             selector = {
                 provider = "snacks", -- Use Snacks.picker as the file selector
