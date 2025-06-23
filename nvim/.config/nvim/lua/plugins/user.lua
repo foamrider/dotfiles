@@ -223,7 +223,7 @@ return {
             "nvim-lua/plenary.nvim",
         },
         keys = {
-            { "<leader>am", "<cmd>MCPHub<cr>", desc = "Open MCPHub" },
+            { "<leader>am", "<cmd>MCPHub<cr>", desc = "mcphub: open" },
         },
         -- build = "npm install -g mcp-hub@latest", -- Installs `mcp-hub` node binary globally
         config = function()
@@ -303,8 +303,8 @@ return {
                 },
             },
             hints = { enabled = true },
-            web_search_engine = {
-                provider = "tavily",
+            windows = {
+                width = 35,
             },
         },
         keys = {

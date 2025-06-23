@@ -1,12 +1,19 @@
 {
-    "mcpServers": {
-        "context7": {
-            "type": "http",
-            "url": "https://mcp.context7.com/mcp"
-        },
-        "github.com/modelcontextprotocol/servers/tree/main/src/git": {
-            "command": "uvx",
-            "args": ["mcp-server-git", "--repository", "/Users/tomas/.dotfiles"]
-        }
+  "nativeMCPServers": [
+    
+  ],
+  "mcpServers": {
+    "github.com/modelcontextprotocol/servers/tree/main/src/git": {
+      "args": [
+        "mcp-server-git",
+        "--repository",
+        "/Users/tomas/.dotfiles"
+      ],
+      "command": "uvx"
+    },
+    "github.com/upstash/context7-mcp": {
+      "command": "npx",
+      "args": ["-y", "@upstash/context7-mcp"]
     }
+  }
 }
