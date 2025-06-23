@@ -14,63 +14,8 @@ return {
         highlights = {
             init = { -- this table overrides highlights in all themes
                 -- Normal
-                Normal = { bg = "none" },
-                SignColumn = { bg = "none" },
-                FoldColumn = { bg = "none" },
-                NormalFloat = { bg = "none" },
-                NormalNC = { bg = "none" },
-                NormalSB = { bg = "none" },
-                -- Telescope
-                TelescopeNormal = { bg = "none" },
-                -- Diagnosis
-                DiagnosticVirtualTextHint = { bg = "none" },
-                DiagnosticVirtualTextWarn = { bg = "none" },
-                DiagnosticVirtualTextInfo = { bg = "none" },
-                DiagnosticVirtualTextError = { bg = "none" },
-                -- NeoTree
-                NeoTreeNormal = { bg = "none" },
-                NeoTreeNormalNC = { bg = "none" },
-                NeoTreeTabInactive = { bg = "none" },
-                NeoTreeTabSeperatorActive = { bg = "none" },
-                NeoTreeTabSeperatorInactive = { bg = "none" },
-                NvimTreeTabSeperatorActive = { bg = "none" },
-                NvimTreeTabSeperatorInactive = { bg = "none" },
-                MiniTabLineFill = { bg = "none" },
-                -- StatusLine
-                StatusLine = { bg = "none" },
-                StatusLineNC = { bg = "none" },
-                StatusLineTerm = { bg = "none" },
-                StatusLineTermNC = { bg = "none" },
-                VertSplit = { bg = "none" },
-                -- QuickFixLine
-                QuickFixLine = { bg = "none" },
-                -- TabLine
-                TabLine = { bg = "none" },
-                TabLineSel = { bg = "none" },
-                TabLineFill = { bg = "none" },
-                -- Cursor
-                CursorLineNr = { bg = "none" },
-                CursorLine = { bg = "none" },
-                ColorColumn = { bg = "none" },
-                -- Search
-                Search = { fg = "red" },
-                IncSearch = { fg = "red" },
-                -- Pmenu
-                Pmenu = { bg = "none" },
-                PmenuSel = { bg = "none" },
-                PmenuSbar = { bg = "none" },
-                PmenuThumb = { bg = "none" },
-                -- Notifications
-                NotifyINFOBody = { bg = "none" },
-                NotifyWARNBody = { bg = "none" },
-                NotifyERRORBody = { bg = "none" },
-                NotifyDEBUGBody = { bg = "none" },
-                NotifyTRACEBody = { bg = "none" },
-                NotifyINFOBorder = { bg = "none" },
-                NotifyWARNBorder = { bg = "none" },
-                NotifyERRORBorder = { bg = "none" },
-                NotifyDEBUGBorder = { bg = "none" },
-                NotifyTRACEBorder = { bg = "none" },
+                Normal = { bg = "#0d1117" },
+                -- Normal = { bg = "none" },
             },
             astrodark = { -- a table of overrides/changes when applying the astrotheme theme
                 -- Normal = { bg = "#000000" },

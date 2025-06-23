@@ -56,3 +56,7 @@ vim.api.nvim_set_keymap(
 
 -- Add esc esc to exit insert mode in terminal
 -- vim.api.nvim_set_keymap("t", "<esc><esc>", "<c-\\><c-n>", { noremap = true })
+
+-- Avante plugin
+-- views can only be fully collapsed with the global statusline
+vim.opt.laststatus = 3
