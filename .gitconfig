@@ -7,18 +7,18 @@
 	name = Tomas Kirkegaard
 	email = tomas.kirkegaard@gmail.com
 	signingkey = ~/.ssh/id_ed25519.pub
-[diff]
-        tool = difftastic
-	external = difftastic
-
-[difftool]
-        prompt = false
-
-[difftool "difftastic"]
-        cmd = difftastic "$LOCAL" "$REMOTE"
-
-[pager]
-        difftool = true
+; [diff]
+;         tool = difftastic
+; 	external = difftastic
+;
+; [difftool]
+;         prompt = false
+;
+; [difftool "difftastic"]
+;         cmd = difftastic "$LOCAL" "$REMOTE"
+;
+; [pager]
+;         difftool = true
 [gpg]
 	format = ssh
 [commit]
