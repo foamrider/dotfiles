@@ -45,10 +45,10 @@ root: ~/GitHub/Kvale/kaos/
 # attach: false
 
 windows:
-  - kaos:
-      layout: f822,315x75,0,0[315x58,0,0,1,315x16,0,59{157x16,0,59,2,157x16,158,59,3}]
+  - editor: nvim
+  - server:
+      layout: main-horizontal
       panes:
-        - nvim
         - docker compose up --watch --force-recreate --build kaos_app
-        - docker compose up --watch --force-recreate --build kaos_db
+        - docker compose up --force-recreate --build kaos_db
 

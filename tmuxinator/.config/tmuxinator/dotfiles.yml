@@ -1,7 +1,7 @@
 # /Users/tomas/.config/tmuxinator/kvale-github.yml
 
 name: dotfiles
-root: ~/
+root: ~/.dotfiles
 
 # Optional tmux socket
 # socket_name: foo
@@ -45,7 +45,4 @@ root: ~/
 # attach: false
 
 windows:
-  - dotfiles:
-      root: ~/.dotfiles
-      panes:
-        - nvim
+  - editor: nvim
