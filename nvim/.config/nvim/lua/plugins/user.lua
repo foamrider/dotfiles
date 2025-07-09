@@ -304,7 +304,7 @@ return {
             },
             hints = { enabled = true },
             windows = {
-                width = 35,
+                width = 40,
             },
         },
         keys = {
