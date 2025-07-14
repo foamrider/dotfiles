@@ -14,7 +14,12 @@ return {
         highlights = {
             init = { -- this table overrides highlights in all themes
                 -- Normal
-                -- Normal = { bg = "#0d1117" },
+                Normal = { bg = "#181818" },
+                NormalNC = { bg = "#181818" },
+                LineNr = { fg = "#444444", bg = "#181818" },
+                SignColumn = { bg = "#181818" },
+                FoldColumn = { bg = "#181818" },
+                WinBar = { fg = "#888888", bg = "#181818" },
                 -- Normal = { bg = "none" },
             },
             astrodark = { -- a table of overrides/changes when applying the astrotheme theme
