@@ -20,6 +20,7 @@ return {
                 SignColumn = { bg = "#181818" },
                 FoldColumn = { bg = "#181818" },
                 WinBar = { fg = "#888888", bg = "#181818" },
+                FloatBorder = { fg = "#888888", bg = "#181818" },
                 -- Normal = { bg = "none" },
             },
             astrodark = { -- a table of overrides/changes when applying the astrotheme theme
