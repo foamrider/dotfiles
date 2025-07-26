@@ -334,6 +334,16 @@ return {
         end,
     },
     {
+        "supermaven-inc/supermaven-nvim",
+        config = function()
+            require("supermaven-nvim").setup {
+                keymaps = {
+                    accept_suggestion = "<C-l>",
+                },
+            }
+        end,
+    },
+    {
         "yetone/avante.nvim",
         event = "VeryLazy",
         version = false, -- Never set this value to "*"! Never!
@@ -356,6 +366,9 @@ return {
                 }
             end,
             auto_suggestions_provider = "copilot",
+            behaviour = {
+                auto_suggestions = false, -- turn off suggestions
+            },
             selector = {
                 provider = "snacks", -- Use Snacks.picker as the file selector
             },
