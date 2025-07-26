@@ -49,7 +49,7 @@ return {
         -- Default list of enabled providers defined so that you can extend it
         -- elsewhere in your config, without redefining it, due to `opts_extend`
         sources = {
-            default = { "avante", "css_vars", "lsp", "path", "snippets", "buffer" },
+            default = { "css_vars", "lsp", "path", "snippets", "buffer" },
             per_filetype = {
                 sql = { "snippets", "dadbod", "buffer" },
             },
@@ -57,6 +57,7 @@ return {
             providers = {
                 dadbod = { name = "Dadbod", module = "vim_dadbod_completion.blink" },
                 avante = { module = "blink-cmp-avante", name = "Avante", opts = {} },
+                supermaven = { module = "supermaven.blink", name = "SuperMaven", opts = {} },
                 css_vars = {
                     name = "css-vars",
                     module = "css-vars.blink",
