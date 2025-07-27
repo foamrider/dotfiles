@@ -3,17 +3,22 @@
     
   ],
   "mcpServers": {
-    "github.com/modelcontextprotocol/servers/tree/main/src/git": {
+    "context7": {
       "args": [
-        "mcp-server-git",
-        "--repository",
-        "/Users/tomas/.dotfiles"
+        "-y",
+        "@upstash/context7-mcp"
       ],
-      "command": "uvx"
+      "command": "npx",
+      "env": {
+        "DEFAULT_MINIMUM_TOKENS": "50000"
+      }
     },
     "github.com/upstash/context7-mcp": {
       "command": "npx",
-      "args": ["-y", "@upstash/context7-mcp"]
+      "args": [
+        "-y",
+        "@upstash/context7-mcp"
+      ]
     }
   }
 }
