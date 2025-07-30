@@ -22,6 +22,7 @@ return {
                 "css-lsp",
                 "powershell-editor-services",
                 "tailwindcss-language-server",
+                "ruby-lsp",
 
                 -- install formatters
                 "stylua",
