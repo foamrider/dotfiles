@@ -113,6 +113,69 @@ return {
         "chrisbra/matchit",
     },
     {
+        "jellydn/hurl.nvim",
+        dependencies = {
+            "MunifTanjim/nui.nvim",
+            "nvim-lua/plenary.nvim",
+            "nvim-treesitter/nvim-treesitter",
+            -- Optional, for markdown rendering with render-markdown.nvim
+            {
+                "MeanderingProgrammer/render-markdown.nvim",
+                opts = {
+                    file_types = { "markdown" },
+                },
+                ft = { "markdown" },
+            },
+        },
+        ft = "hurl",
+        opts = {
+            -- Show debugging info
+            debug = false,
+            -- Show notification on run
+            show_notification = false,
+            -- Show response in popup or split
+            mode = "popup",
+            -- Set popup width
+            popup_size = {
+                width = 120,
+                height = 60,
+            },
+            -- Default formatter
+            formatters = {
+                json = { "jq" }, -- Make sure you have install jq in your system, e.g: brew install jq
+                html = {
+                    "prettier", -- Make sure you have install prettier in your system, e.g: npm install -g prettier
+                    "--parser",
+                    "html",
+                },
+                xml = {
+                    "tidy", -- Make sure you have installed tidy in your system, e.g: brew install tidy-html5
+                    "-xml",
+                    "-i",
+                    "-q",
+                },
+            },
+            -- Default mappings for the response popup or split views
+            mappings = {
+                close = "q", -- Close the response popup or split view
+                next_panel = "<C-n>", -- Move to the next response popup window
+                prev_panel = "<C-p>", -- Move to the previous response popup window
+            },
+        },
+        keys = {
+            -- Run API request
+            { "<leader>HA", "<cmd>HurlRunner<CR>", desc = "Run All requests" },
+            { "<leader>Ha", "<cmd>HurlRunnerAt<CR>", desc = "Run Api request" },
+            { "<leader>Hte", "<cmd>HurlRunnerToEntry<CR>", desc = "Run Api request to entry" },
+            { "<leader>HtE", "<cmd>HurlRunnerToEnd<CR>", desc = "Run Api request from current entry to end" },
+            { "<leader>Htm", "<cmd>HurlToggleMode<CR>", desc = "Hurl Toggle Mode" },
+            { "<leader>Htv", "<cmd>HurlVerbose<CR>", desc = "Run Api in verbose mode" },
+            { "<leader>HtV", "<cmd>HurlVeryVerbose<CR>", desc = "Run Api in very verbose mode" },
+            -- Run Hurl request in visual mode
+            { "<leader>Hh", ":HurlRunner<CR>", desc = "Hurl Runner", mode = "v" },
+        },
+    },
+    {
         "olrtg/nvim-emmet",
         config = function() vim.keymap.set({ "n", "v" }, "<leader>xe", require("nvim-emmet").wrap_with_abbreviation) end,
     },
@@ -193,16 +256,16 @@ return {
             hl(0, "MultiCursorDisabledSign", { link = "SignColumn" })
         end,
     },
-    {
-        "kylechui/nvim-surround",
-        version = "*", -- Use for stability; omit to use `main` branch for the latest features
-        event = "VeryLazy",
-        config = function()
-            require("nvim-surround").setup {
-                -- Configuration here, or leave empty to use defaults
-            }
-        end,
-    },
+    -- {
+    --     "kylechui/nvim-surround",
+    --     version = "*", -- Use for stability; omit to use `main` branch for the latest features
+    --     event = "VeryLazy",
+    --     config = function()
+    --         require("nvim-surround").setup {
+    --             -- Configuration here, or leave empty to use defaults
+    --         }
+    --     end,
+    -- },
     {
         "braxtons12/blame_line.nvim",
         config = function()
@@ -411,6 +474,7 @@ return {
             },
         },
         keys = {
+            { "<leader>a", group = "Avante", desc = "󰚩 Avante" },
             { "<leader>ax", "<cmd>AvanteClear<cr>", desc = "avante: clear history" },
         },
         -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`

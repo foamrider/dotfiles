@@ -15,6 +15,7 @@ return {
             "css",
             "scss",
             "typescript",
+            "hurl",
             -- add more arguments for adding more treesitter parsers
         },
     },
