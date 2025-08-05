@@ -206,16 +206,17 @@ return {
             local set = vim.keymap.set
 
             -- Add or skip cursor above/below the main cursor.
-            -- set({ "n", "x" }, "<up>", function() mc.lineAddCursor(-1) end)
-            -- set({ "n", "x" }, "<down>", function() mc.lineAddCursor(1) end)
-            -- set({ "n", "x" }, "<leader><up>", function() mc.lineSkipCursor(-1) end)
-            -- set({ "n", "x" }, "<leader><down>", function() mc.lineSkipCursor(1) end)
+            set({ "n", "x" }, "<m-d>", function() mc.matchAddCursor(1) end, { desc = "Skip cursor (next match)" })
+            -- set({ "n", "x" }, "<up>", function() mc.matchAddCursor(-1) end, { desc = "Add cursor (next match)" })
+            -- set({ "n", "x" }, "<down>", function() mc.matchAddCursor(1) end, { desc = "Skip cursor (next match)" })
+            -- set( { "n", "x" }, "<leader><up>", function() mc.matchSkipCursor(-1) end, { desc = "Add cursor (prev match)" })
+            -- set( { "n", "x" }, "<leader><down>", function() mc.matchSkipCursor(1) end, { desc = "Skip cursor (prev match)" })
 
             -- Add or skip adding a new cursor by matching word/selection
-            set({ "n", "x" }, "<leader>n", function() mc.matchAddCursor(1) end, { desc = "Add cursor (next match)" })
-            set({ "n", "x" }, "<leader>s", function() mc.matchSkipCursor(1) end, { desc = "Skip cursor (next match)" })
-            set({ "n", "x" }, "<leader>N", function() mc.matchAddCursor(-1) end, { desc = "Add cursor (prev match)" })
-            set({ "n", "x" }, "<leader>S", function() mc.matchSkipCursor(-1) end, { desc = "Skip cursor (prev match)" })
+            -- set({ "n", "x" }, "<leader>n", function() mc.matchAddCursor(1) end, { desc = "Add cursor (next match)" })
+            -- set({ "n", "x" }, "<leader>s", function() mc.matchSkipCursor(1) end, { desc = "Skip cursor (next match)" })
+            -- set({ "n", "x" }, "<leader>N", function() mc.matchAddCursor(-1) end, { desc = "Add cursor (prev match)" })
+            -- set({ "n", "x" }, "<leader>S", function() mc.matchSkipCursor(-1) end, { desc = "Skip cursor (prev match)" })
 
             -- Add and remove cursors with control + left click.
             set("n", "<c-leftmouse>", mc.handleMouse)
@@ -233,7 +234,7 @@ return {
                 layerSet({ "n", "x" }, "<right>", mc.nextCursor)
 
                 -- Delete the main cursor.
-                layerSet({ "n", "x" }, "<leader>x", mc.deleteCursor, { desc = "Delete current cursor" })
+                layerSet({ "n", "x" }, "<leader>X", mc.deleteCursor, { desc = "Delete current cursor" })
 
                 -- Enable and clear cursors using escape.
                 layerSet("n", "<esc>", function()
@@ -256,16 +257,16 @@ return {
             hl(0, "MultiCursorDisabledSign", { link = "SignColumn" })
         end,
     },
-    -- {
-    --     "kylechui/nvim-surround",
-    --     version = "*", -- Use for stability; omit to use `main` branch for the latest features
-    --     event = "VeryLazy",
-    --     config = function()
-    --         require("nvim-surround").setup {
-    --             -- Configuration here, or leave empty to use defaults
-    --         }
-    --     end,
-    -- },
+    {
+        "kylechui/nvim-surround",
+        version = "*", -- Use for stability; omit to use `main` branch for the latest features
+        event = "VeryLazy",
+        config = function()
+            require("nvim-surround").setup {
+                -- Configuration here, or leave empty to use defaults
+            }
+        end,
+    },
     {
         "braxtons12/blame_line.nvim",
         config = function()
