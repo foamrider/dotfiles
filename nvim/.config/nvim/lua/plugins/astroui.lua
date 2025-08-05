@@ -21,7 +21,9 @@ return {
                 FoldColumn = { bg = "#181818" },
                 WinBar = { fg = "#888888", bg = "#181818" },
                 FloatBorder = { fg = "#888888", bg = "#181818" },
-                -- Normal = { bg = "none" },
+                LspInlayHint = { fg = "#888888", italic = true },
+                LspCodeLens = { fg = "#888888", italic = true },
+                LspCodeLensText = { fg = "#888888", italic = true },
             },
             astrodark = { -- a table of overrides/changes when applying the astrotheme theme
                 -- Normal = { bg = "#000000" },
