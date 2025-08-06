@@ -14,8 +14,12 @@ return {
         highlights = {
             init = { -- this table overrides highlights in all themes
                 -- Normal
-                Normal = { bg = "#181818" },
-                NormalNC = { bg = "#181818" },
+                -- Normal = { bg = "#181818" },
+                -- NormalNC = { bg = "#181818" },
+
+                Normal = { bg = "none" },
+                NormalNC = { bg = "none" },
+
                 LineNr = { fg = "#444444", bg = "#181818" },
                 SignColumn = { bg = "#181818" },
                 FoldColumn = { bg = "#181818" },
