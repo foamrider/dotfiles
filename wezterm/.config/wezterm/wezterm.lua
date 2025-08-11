@@ -67,51 +67,11 @@ config.initial_rows = 50
 config.initial_cols = 180
 
 -- Keybindings
-config.keys = {
-	-- Default QuickSelect keybind (CTRL-SHIFT-Space) gets captured by something
-	-- else on my system
-	{
-		key = "A",
-		mods = "CTRL|SHIFT",
-		action = wezterm.action.QuickSelect,
-	},
-	{
-		key = "O",
-		mods = "CTRL|SHIFT",
-		action = wezterm.action.EmitEvent("toggle-window-background-opacity"),
-	},
-	{
-		key = "E",
-		mods = "CTRL|SHIFT",
-		action = wezterm.action.EmitEvent("toggle-ligatures"),
-	},
-	-- Quickly open config file with common macOS keybind
-	{
-		key = ",",
-		mods = "SUPER",
-		action = wezterm.action.SpawnCommandInNewWindow({
-			cwd = os.getenv("WEZTERM_CONFIG_DIR"),
-			args = { os.getenv("SHELL"), "-c", "$VISUAL $WEZTERM_CONFIG_FILE" },
-		}),
-	},
-	-- Quickly open config file with alternative keybind
-	{
-		key = "<",
-		mods = "CTRL|SHIFT",
-		action = wezterm.action.SpawnCommandInNewWindow({
-			cwd = os.getenv("WEZTERM_CONFIG_DIR"),
-			args = { os.getenv("SHELL"), "-c", "$VISUAL $WEZTERM_CONFIG_FILE" },
-		}),
-	},
-	-- Spawn Window without tmux
-	{
-		key = ">",
-		mods = "CTRL|SHIFT",
-		action = wezterm.action.SpawnCommandInNewWindow({
-			args = { os.getenv("SHELL"), "-l", "-c", "zsh" },
-		}),
-	},
-}
+-- Make Option/Alt produce the layout-composed character (e.g. { })
+config.send_composed_key_when_left_alt_is_pressed = true
+config.send_composed_key_when_right_alt_is_pressed = true
+-- (Optional) lets macOS handle higher-level input
+config.use_ime = true
 
 -- Return config to WezTerm
 return config
