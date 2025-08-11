@@ -12,19 +12,37 @@ return {
         colorscheme = "monokai-pro",
         -- AstroUI allows you to easily modify highlight groups easily for any and all colorschemes
         highlights = {
-            init = { -- this table overrides highlights in all themes
-                -- Normal
-                -- Normal = { bg = "#181818" },
-                -- NormalNC = { bg = "#181818" },
+            init = {
+                -- keep your transparent main windows
+                Normal = { bg = "NONE" },
+                NormalNC = { bg = "NONE" },
 
-                Normal = { bg = "none" },
-                NormalNC = { bg = "none" },
+                -- floats & popups (input boxes, LSP hovers, Noice/Dressing, Telescope, etc.)
+                NormalFloat = { bg = "#181818" },
+                FloatBorder = { fg = "#888888", bg = "#181818" },
+                FloatTitle = { fg = "#888888", bg = "#181818" },
 
+                -- cmdline popup / dressing input (if you use Noice/Dressing)
+                NoicePopup = { bg = "#181818" },
+                NoicePopupBorder = { fg = "#888888", bg = "#181818" },
+                NoiceCmdlinePopup = { bg = "#181818" },
+                NoiceCmdlinePopupBorder = { fg = "#888888", bg = "#181818" },
+
+                -- Neo-tree
+                NeoTreeNormal = { bg = "#181818" },
+                NeoTreeNormalNC = { bg = "#181818" },
+                NeoTreeFloatBorder = { fg = "#888888", bg = "#181818" },
+                NeoTreeFloatTitle = { fg = "#888888", bg = "#181818" },
+
+                -- completion menu
+                Pmenu = { bg = "#181818" },
+                PmenuSel = { bg = "#333333" },
+
+                -- Other plugins and UI elements
                 LineNr = { fg = "#444444", bg = "#181818" },
                 SignColumn = { bg = "#181818" },
                 FoldColumn = { bg = "#181818" },
                 WinBar = { fg = "#888888", bg = "#181818" },
-                FloatBorder = { fg = "#888888", bg = "#181818" },
                 LspInlayHint = { fg = "#888888", italic = true },
                 LspCodeLens = { fg = "#888888", italic = true },
                 LspCodeLensText = { fg = "#888888", italic = true },
