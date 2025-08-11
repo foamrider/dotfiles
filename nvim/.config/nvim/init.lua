@@ -57,6 +57,18 @@ vim.api.nvim_set_keymap(
 -- Add esc esc to exit insert mode in terminal
 -- vim.api.nvim_set_keymap("t", "<esc><esc>", "<c-\\><c-n>", { noremap = true })
 
+-- * from visual mode puts selection in search register
+vim.keymap.set("x", "*", function()
+    -- Yank visual selection
+    vim.cmd "normal! y"
+    -- Get yanked text
+    local text = vim.fn.getreg '"'
+    -- Escape regex special chars
+    text = text:gsub([=[[\^$.*/~\[\]]]=], [[\%0]])
+    -- Set search register
+    vim.fn.setreg("/", text)
+end, { noremap = true, silent = true })
+
 -- Avante plugin
 -- views can only be fully collapsed with the global statusline
 vim.opt.laststatus = 3
