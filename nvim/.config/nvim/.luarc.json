@@ -1,0 +1,9 @@
+{
+    "workspace.library": [
+        "~/.config/nvim"
+    ],
+    "diagnostics.globals": [
+        "vim"
+    ],
+    "workspace.checkThirdParty": false
+}
