@@ -47,7 +47,8 @@ root: ~/GitHub/Kvale/nuxt-boilerplate/
 windows:
   - editor: nvim
   - server:
-      layout: tiled
+      layout: even-vertical
       panes:
         - docker compose up --watch --force-recreate --build app
         - docker compose up --force-recreate --build postgres
+        - npm run db:studio
