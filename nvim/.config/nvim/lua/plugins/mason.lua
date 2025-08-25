@@ -20,6 +20,7 @@ return {
                 "json-lsp",
                 "html-lsp",
                 "css-lsp",
+                "stylelint-lsp",
                 "powershell-editor-services",
                 "tailwindcss-language-server",
                 "ruby-lsp",

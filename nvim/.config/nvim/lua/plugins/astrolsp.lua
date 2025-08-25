@@ -48,11 +48,30 @@ return {
                 root_dir = require("lspconfig.util").root_pattern("deno.json", "deno.jsonc"),
             },
             volar = {
+                enabled = false,
                 init_options = {
                     vue = {
                         hybridMode = true,
                     },
                 },
+            },
+            cssls = {
+                settings = {
+                    css = {
+                        validate = true, -- default, overridden below
+                    },
+                },
+                on_new_config = function(new_config, root_dir)
+                    -- Check if stylelint.config.mjs exists in project root
+                    local stylelint_root = require("lspconfig.util").root_pattern "stylelint.config.mjs"(root_dir)
+                    if stylelint_root ~= nil then
+                        -- Disable validation if stylelint config is present
+                        new_config.settings.css.validate = false
+                    else
+                        -- Keep validation enabled if no stylelint config
+                        new_config.settings.css.validate = true
+                    end
+                end,
             },
             ts_ls = {
                 init_options = {
