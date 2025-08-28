@@ -339,12 +339,24 @@ return {
     },
     {
         "supermaven-inc/supermaven-nvim",
-        config = function()
-            require("supermaven-nvim").setup {
-                keymaps = {
-                    accept_suggestion = "<C-l>",
-                },
-            }
+        event = "InsertEnter",
+        opts = {
+            keymaps = {
+                accept_suggestion = nil, -- Blink will handle <Tab>
+                -- (optional) keep others or set them to nil as you like:
+                -- accept_word = nil,
+                -- clear_suggestion = nil,
+            },
+        },
+        init = function()
+            -- Blink will call this when you hit <Tab>
+            vim.g.ai_accept = function()
+                local s = require "supermaven-nvim.completion_preview"
+                if s.has_suggestion() then
+                    vim.schedule(function() s.on_accept_suggestion() end)
+                    return true
+                end
+            end
         end,
     },
     {

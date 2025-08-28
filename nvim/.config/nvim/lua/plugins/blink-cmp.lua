@@ -28,7 +28,22 @@ return {
         -- C-k: Toggle signature help (if signature.enabled = true)
         --
         -- See :h blink-cmp-config-keymap for defining your own keymap
-        keymap = { preset = "default" },
+        keymap = {
+            preset = "none",
+            ["<Tab>"] = {
+                "snippet_forward",
+                function()
+                    -- Accept Supermaven ghost if present
+                    local s = require "supermaven-nvim.completion_preview"
+                    if s.has_suggestion() then
+                        vim.schedule(function() s.on_accept_suggestion() end)
+                        return true
+                    end
+                end,
+                "fallback",
+            },
+            ["<S-Tab>"] = { "snippet_backward", "fallback" },
+        },
 
         appearance = {
             -- 'mono' (default) for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
