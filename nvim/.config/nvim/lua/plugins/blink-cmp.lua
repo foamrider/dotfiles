@@ -3,7 +3,6 @@ return {
     -- optional: provides snippets for the snippet source
     dependencies = {
         "rafamadriz/friendly-snippets",
-        "Kaiser-Yang/blink-cmp-avante",
         "jdrupal-dev/css-vars.nvim",
     },
 
@@ -56,7 +55,6 @@ return {
             -- add vim-dadbod-completion to your completion providers
             providers = {
                 dadbod = { name = "Dadbod", module = "vim_dadbod_completion.blink" },
-                avante = { module = "blink-cmp-avante", name = "Avante", opts = {} },
                 supermaven = { module = "supermaven.blink", name = "SuperMaven", opts = {} },
                 css_vars = {
                     name = "css-vars",
