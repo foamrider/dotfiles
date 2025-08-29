@@ -33,6 +33,8 @@ return {
                 NeoTreeNormalNC = { bg = "#181818" },
                 NeoTreeFloatBorder = { fg = "#888888", bg = "#181818" },
                 NeoTreeFloatTitle = { fg = "#888888", bg = "#181818" },
+                SnacksPickerDir = { fg = "#888888", bg = "NONE" },
+                SnacksPickerDirIcon = { fg = "#b0b0b0", bg = "NONE" },
 
                 -- completion menu
                 Pmenu = { bg = "#181818" },
