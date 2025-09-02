@@ -1,3 +1,13 @@
 [tools]
+fzf = "latest"
 node = "lts"
 ruby = "latest"
+lazygit = "latest"
+ripgrep = "latest"
+starship = "latest"
+hurl = "latest"
+colima = "latest"
+opencode = "latest"
+pnpm = "latest"
+azure = "latest"
+git-lfs = "latest"
