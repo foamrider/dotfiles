@@ -73,6 +73,13 @@ return {
                     end
                 end,
             },
+            jsonls = {
+                settings = {
+                    format = {
+                        enable = true,
+                    },
+                },
+            },
             ts_ls = {
                 init_options = {
                     plugins = {
