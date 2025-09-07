@@ -48,6 +48,10 @@ return {
                 LspInlayHint = { fg = "#888888", italic = true },
                 LspCodeLens = { fg = "#888888", italic = true },
                 LspCodeLensText = { fg = "#888888", italic = true },
+
+                -- Diff view
+                DiffChange = { bg = "#2a1f1f", fg = "#b77150" },
+                DiffText = { bg = "#4a2a1f", fg = "#ffd7a0", bold = true },
             },
             astrodark = { -- a table of overrides/changes when applying the astrotheme theme
                 -- Normal = { bg = "#000000" },
