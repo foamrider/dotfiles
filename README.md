@@ -65,8 +65,8 @@ alias lt3="eza -lhg --icons --git --tree --level=3"
 eval "$(mise activate zsh)"
  
 # zsh-autosuggestions
-source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source "${HOMEBREW_PREFIX}"/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+source "${HOMEBREW_PREFIX}"/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
  
 # Autosuggest should be lighter
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=#75715e'
