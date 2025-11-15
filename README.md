@@ -27,6 +27,16 @@ https://dev.to/andrenbrandao/terminal-setup-with-zsh-tmux-dracula-theme-48lm
 To remember, may vary depending on system
 
 ```sh
+# Brew completion
+if type brew &>/dev/null; then
+    FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
+    autoload -Uz compinit
+    compinit
+fi
+
+# Starship
+eval "$(starship init zsh)"
+ 
 # Refresh ssh autocomplete
 function refresh_ssh_autocomplete () {
     host_list=($(cat ~/.ssh/config | grep 'Host '  | awk '{s = s $2 " "} END {print s}'))
@@ -50,11 +60,17 @@ alias lt="eza -lhg --icons --git --tree"
 alias lt1="eza -lhg --icons --git --tree --level=1"
 alias lt2="eza -lhg --icons --git --tree --level=2"
 alias lt3="eza -lhg --icons --git --tree --level=3"
-
+ 
+# Mise
+eval "$(mise activate zsh)"
+ 
 # zsh-autosuggestions
 source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
  
-# Autosuggest matching theme
+# Autosuggest should be lighter
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=#75715e'
+
+# opencode
+export PATH=/Users/tkg/.opencode/bin:$PATH
 ```
