@@ -56,6 +56,7 @@ return {
         },
     },
 
+    -- Split and Join
     {
         "Wansmer/treesj",
         keys = { "<space>m", "<space>j", "<space>s" },
@@ -65,6 +66,20 @@ return {
                 max_join_length = 250,
             }
         end,
+    },
+
+    -- Better Quickfix
+    {
+        "stevearc/quicker.nvim",
+        ft = "qf",
+        ---@module "quicker"
+        ---@type quicker.SetupOptions
+        opts = {
+            keys = {
+                { ">", "<cmd>lua require('quicker').expand()<CR>", desc = "Expand quickfix content" },
+                { "<", "<cmd>lua require('quicker').collapse()<CR>", desc = "Collapse quickfix content" },
+            },
+        },
     },
 
     -- Theme
