@@ -1,7 +1,6 @@
 -- You can also add or configure plugins by creating files in this `plugins/` folder
 -- PLEASE REMOVE THE EXAMPLES YOU HAVE NO INTEREST IN BEFORE ENABLING THIS FILE
 -- Here are some examples:
-
 ---@type LazySpec
 return {
 
@@ -19,8 +18,10 @@ return {
     -- customize dashboard options
     {
         "folke/snacks.nvim",
-        opts = {
-            dashboard = {
+        opts = function(_, opts)
+            local get_icon = require("astroui").get_icon
+
+            opts.dashboard = {
                 preset = {
                     header = table.concat({
                         "███████╗ ██████╗  █████╗ ███╗   ███╗██╗   ██╗",
@@ -37,9 +38,59 @@ return {
                         "     ██║ ╚████║ ╚████╔╝ ██║██║ ╚═╝ ██║       ",
                         "     ╚═╝  ╚═══╝  ╚═══╝  ╚═╝╚═╝     ╚═╝       ",
                     }, "\n"),
+                    keys = {
+                        { key = "n", action = "<Leader>n", icon = get_icon("FileNew", 0, true), desc = "New File  " },
+                        { key = "f", action = "<Leader>ff", icon = get_icon("Search", 0, true), desc = "Find File  " },
+                        {
+                            key = "p",
+                            action = "<Leader>fp",
+                            icon = get_icon("FolderOpen", 0, true),
+                            desc = "Projects",
+                        },
+                        {
+                            key = "o",
+                            action = "<Leader>fo",
+                            icon = get_icon("DefaultFile", 0, true),
+                            desc = "Recents  ",
+                        },
+                        {
+                            key = "w",
+                            action = "<Leader>fw",
+                            icon = get_icon("WordFile", 0, true),
+                            desc = "Find Word  ",
+                        },
+                        {
+                            key = "'",
+                            action = "<Leader>f'",
+                            icon = get_icon("Bookmarks", 0, true),
+                            desc = "Bookmarks  ",
+                        },
+                        {
+                            key = "s",
+                            action = "<Leader>Sl",
+                            icon = get_icon("Refresh", 0, true),
+                            desc = "Last Session  ",
+                        },
+                        {
+                            key = "q",
+                            action = "<Leader>q",
+                            icon = get_icon("BufferClose", 0, true),
+                            desc = "Quit  ",
+                        },
+                    },
                 },
-            },
-        },
+            }
+
+            opts.picker = {
+                sources = {
+                    projects = {
+                        dev = { "~/GitHub/Kvale", "~/GitHub/Personal", "~/.dotfiles" },
+                        patterns = { ".git", "package.json", "Makefile" },
+                        recent = false,
+                    },
+                },
+            }
+        end,
     },
 
     -- Customize todo comments
